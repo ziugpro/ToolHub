@@ -1,0 +1,125 @@
+local PremiumKeys = {  
+    "qczkdb012fd7pjfgt71jnobo9",  
+}  
+  
+local BlacklistKeys = {  
+    ["abc123"] = "Hành vi gian lận bị phát hiện",  
+    ["badkey456"] = "Vi phạm điều khoản sử dụng",  
+    ["xyz789"] = "Key đã bị thu hồi do lạm dụng"  
+}  
+  
+local function isPremiumKey(key)  
+    for _, v in ipairs(PremiumKeys) do  
+        if v == key then  
+            return true  
+        end  
+    end  
+    return false  
+end  
+  
+local function getBlacklistReason(key)  
+    return BlacklistKeys[key]  
+end  
+  
+if not script_key or getBlacklistReason(script_key) then  
+    local reason = getBlacklistReason(script_key) or "Key bị chặn"  
+    game:GetService("Players").LocalPlayer:Kick(reason)  
+    return  
+end  
+  
+if isPremiumKey(script_key) then  
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Tool Hub",
+    Text = "Success Loading",
+    Icon = "rbxthumb://type=Asset&id=76608011467652&w=420&h=420",
+    Duration = 5,
+    Callback = function()
+    end
+})
+repeat task.wait() until game:IsLoaded()
+
+getgenv().Image = "rbxthumb://type=Asset&id=76608011467652&w=420&h=420"
+getgenv().ToggleUI = "LeftControl"
+
+task.spawn(function()
+    if not getgenv().LoadedMobileUI then
+        getgenv().LoadedMobileUI = true
+        local OpenUI = Instance.new("ScreenGui")
+        local ImageButton = Instance.new("ImageButton")
+        local UICorner = Instance.new("UICorner")
+        OpenUI.Name = "OpenUI"
+        OpenUI.Parent = game:GetService("CoreGui")
+        OpenUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        ImageButton.Parent = OpenUI
+        ImageButton.BackgroundColor3 = Color3.fromRGB(105, 105, 105)
+        ImageButton.BackgroundTransparency = 0.8
+        ImageButton.Position = UDim2.new(0, 5, 0, 5)
+        ImageButton.Size = UDim2.new(0, 55, 0, 55)
+        ImageButton.Image = getgenv().Image
+        ImageButton.Draggable = false
+        ImageButton.Transparency = 1
+        UICorner.CornerRadius = UDim.new(100)
+        UICorner.Parent = ImageButton
+        ImageButton.MouseButton1Click:Connect(function()
+            game:GetService("VirtualInputManager"):SendKeyEvent(true, getgenv().ToggleUI, false, game)
+        end)
+    end
+end)
+
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+local Window = Fluent:CreateWindow({
+    Title = "Tool Hub [ Premium ]",
+    SubTitle = "By Ziugpro",
+    TabWidth = 130,
+    Size = UDim2.fromOffset(505, 355),
+    Acrylic = true,
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.LeftControl
+})
+
+local Tabs = {
+    Main = Window:AddTab({ Title = "Tab General", Icon = "" }),
+    
+}
+Tabs.Main:AddDropdown("Dropdown", {
+        Title = "Select Friend",
+        Values = {"nil value"},
+        Multi = true,
+        Default = {"nil value"},  
+        Callback = function()
+        end
+    })
+Tabs.Main:AddDropdown("Dropdown", {
+        Title = "Select Device",
+        Values = {"PC", "Moblie"},
+        Multi = false,
+        Default = 1,  
+        Callback = function()
+        end
+    })
+Tabs.Main:AddDropdown("Dropdown", {
+        Title = "Select Verison ( Moblie )",
+        Values = {"Verison 7.89 - DeltaX", "Verison 7.91 - Ronix", "Verison 9.19 - Misc Client"},
+        Multi = false,
+        Default = 1,  
+        Callback = function()
+        end
+    })
+Tabs.Main:AddDropdown("Dropdown", {
+        Title = "Select Verison ( PC )",
+        Values = {"Verison 8.89 - Wave", "Verison 8.91 - AWP", "Verison 1.19 - Misc Client"},
+        Multi = false,
+        Default = 1,  
+        Callback = function()
+        end
+    })
+local TogglePro = Tabs.Main:AddToggle("TogglePro", {Title = "Kill Aura ( Improved )", Default = false })
+local TogglePro = Tabs.Main:AddToggle("TogglePro", {Title = "Kill Player ( In development )", Default = false })
+local TogglePro = Tabs.Main:AddToggle("TogglePro", {Title = "Start Kill Player", Default = false })
+local TogglePro = Tabs.Main:AddToggle("TogglePro", {Title = "Start Kaitun v4", Default = false })
+
+else  
+    game:GetService("Players").LocalPlayer:Kick("Invalid Key")  
+end
