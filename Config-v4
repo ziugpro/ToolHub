@@ -74,15 +74,15 @@ local Window = Fluent:CreateWindow({
     Title = "Tool Hub [ Premium ]",
     SubTitle = "By Ziugpro",
     TabWidth = 130,
-    Size = UDim2.fromOffset(505, 355),
+    Size = UDim2.fromOffset(505, 335),
     Acrylic = true,
     Theme = "Dark",
     MinimizeKey = Enum.KeyCode.LeftControl
 })
 
 local Tabs = {
-    Main = Window:AddTab({ Title = "Tab General", Icon = "" }),
-    
+    Main = Window:AddTab({ Title = "Tab Kaitun v4", Icon = "" }),
+    Draco = Window:AddTab({ Title = "Tab Kaitun Draco", Icon = "" }),
 }
 Tabs.Main:AddDropdown("Dropdown", {
         Title = "Select Friend",
@@ -130,7 +130,10 @@ Tabs.Main:AddDropdown("Dropdown", {
     })
 local TogglePro = Tabs.Main:AddToggle("TogglePro", {Title = "Start Get Race ( Select )", Default = false })
 local TogglePro = Tabs.Main:AddToggle("TogglePro", {Title = "Start Get All Race", Default = false })
-
+local TogglePro = Tabs.Draco:AddToggle("TogglePro", {Title = "Fix Error ( Fix Not Tween )", Default = true, })
+local TogglePro = Tabs.Draco:AddToggle("TogglePro", {Title = "Auto Draco v2", Default = false, })
+local TogglePro = Tabs.Draco:AddToggle("TogglePro", {Title = "Auto Draco v3", Default = false, })
+local TogglePro = Tabs.Draco:AddToggle("TogglePro", {Title = "Start Kaitun Draco", Default = false, })
 else  
     game:GetService("Players").LocalPlayer:Kick("Invalid Key")  
 end
