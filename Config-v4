@@ -120,6 +120,16 @@ local TogglePro = Tabs.Main:AddToggle("TogglePro", {Title = "Kill Aura ( Improve
 local TogglePro = Tabs.Main:AddToggle("TogglePro", {Title = "Kill Player ( In development )", Default = false })
 local TogglePro = Tabs.Main:AddToggle("TogglePro", {Title = "Start Kill Player", Default = false })
 local TogglePro = Tabs.Main:AddToggle("TogglePro", {Title = "Start Kaitun v4", Default = false })
+Tabs.Main:AddDropdown("Dropdown", {
+        Title = "Select Race",
+        Values = {"Rabbit", "Angel", "Ghoul", "Human", "Cyborg"},
+        Multi = false,
+        Default = 1,  
+        Callback = function()
+        end
+    })
+local TogglePro = Tabs.Main:AddToggle("TogglePro", {Title = "Start Get Race ( Select )", Default = false })
+local TogglePro = Tabs.Main:AddToggle("TogglePro", {Title = "Start Get All Race", Default = false })
 
 else  
     game:GetService("Players").LocalPlayer:Kick("Invalid Key")  
