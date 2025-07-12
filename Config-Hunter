@@ -1,0 +1,79 @@
+local PremiumKeys = {  
+    "JRTtibghwXeykmqzh4r3oCvzf35xtb",  
+}  
+  
+local BlacklistKeys = {  
+    ["abc123"] = "Hành vi gian lận bị phát hiện",  
+    ["badkey456"] = "Vi phạm điều khoản sử dụng",  
+    ["xyz789"] = "Key đã bị thu hồi do lạm dụng"  
+}  
+  
+local function isPremiumKey(key)  
+    for _, v in ipairs(PremiumKeys) do  
+        if v == key then  
+            return true  
+        end  
+    end  
+    return false  
+end  
+  
+local function getBlacklistReason(key)  
+    return BlacklistKeys[key]  
+end  
+  
+if not script_key or getBlacklistReason(script_key) then  
+    local reason = getBlacklistReason(script_key) or "Key bị chặn"  
+    game:GetService("Players").LocalPlayer:Kick(reason)  
+    return  
+end  
+  
+if isPremiumKey(script_key) then  
+local DarkraiX = loadstring(game:HttpGet("https://raw.githubusercontent.com/ziugpro/Ui/refs/heads/main/UiLib", true))()
+local Library = DarkraiX:Window("Tool Hub","","rbxthumb://type=Asset&id=76608011467652&w=420&h=420",Enum.KeyCode.RightControl);
+info = Library:Tab("⏲️ ข้อมูล ⏲️")
+Tab1 = Library:Tab("⏲️ ทั่วไป ⏲️")
+
+info:Seperator("เวอร์ชันสคริปต์:")
+info:Label("เวอร์ชัน : Hunter")
+info:Seperator("ผู้พัฒนา:")
+info:Label("Thanawat_9999")
+info:Seperator("หมดอายุ:")
+info:Label("1 เดือน - 1 สัปดาห์")
+
+Tab1:Seperator("หลัก")
+
+Tab1:Toggle("การปลุกอัตโนมัติอีกครั้ง",false,function(value)
+end)
+
+Tab1:Toggle("รับรางวัลรายวันอัตโนมัติ",false,function(value)
+end)
+
+Tab1:Seperator("รหัส")
+
+Tab1:Dropdown("เลือกสถิติ",{"Vitality", "Intellect", "Agility", "Perception", "Strength"},function(value)
+end)
+
+Tab1:Toggle("สถิติการอัพอัตโนมัติ",false,function(value)
+end)
+
+Tab1:Seperator("ทั่วไป")
+
+Tab1:Dropdown("เลือกดันเจี้ยน",{""},function(value)
+end)
+
+Tab1:Dropdown("เลือกระดับความยาก",{""},function(value)
+end)
+
+Tab1:Toggle("ดันเจี้ยนฟาร์มอัตโนมัติ",false,function(value)
+end)
+
+Tab1:Toggle("ดันเจี้ยนออกอัตโนมัติ",false,function(value)
+end)
+
+Tab1:Toggle("เข้าร่วมดันเจี้ยนอัตโนมัติ",false,function(value)
+end)
+
+Tab1:Line()
+else  
+    game:GetService("Players").LocalPlayer:Kick("Invalid Key")  
+end
