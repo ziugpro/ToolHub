@@ -3,7 +3,8 @@ local PremiumKeys = {
     "CjR4t2d0vYhUYUsrP63mjLbPQd5oARsy",
 }  
   
-local BlacklistKeys = {  
+local BlacklistKeys = {
+    ["CjR4t2d0vYhUYUsrP63mjLbPQd5oARsy"] = "Lý do: hành vi xúc phạm Developer", 
     ["abc123"] = "Hành vi gian lận bị phát hiện",  
     ["badkey456"] = "Vi phạm điều khoản sử dụng",  
     ["xyz789"] = "Key đã bị thu hồi do lạm dụng"  
