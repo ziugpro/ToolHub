@@ -1,5 +1,6 @@
 local PremiumKeys = {  
-    "iP07tXCsMZ5BeapKb71ngP6cmpiuPDXP",  
+    "iP07tXCsMZ5BeapKb731ngP6cmpiuPDXP", 
+    "x512RczdPSsJOWUjJA1ZLCfNjilLQc7O"
 }  
   
 local BlacklistKeys = {  
